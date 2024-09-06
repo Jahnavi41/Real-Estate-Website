@@ -13,3 +13,4 @@ Technology Stack
 - Backend: Django (Python)
 - Database: SQLite
 - Frontend: HTML, CSS, JavaScript 
+![image](https://github.com/user-attachments/assets/853a39c8-e2a3-41a8-8fd7-f581901a959b)
