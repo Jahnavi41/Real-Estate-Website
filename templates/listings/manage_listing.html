@@ -1,0 +1,23 @@
+<!-- manage_listings.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Pending Listings</h2>
+
+{% for listing in pending_listings %}
+<div>
+    <h3>{{ listing.title }}</h3>
+    <p>{{ listing.description }}</p>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="listing_id" value="{{ listing.id }}">
+        <button type="submit" name="action" value="approve">Approve</button>
+        <button type="submit" name="action" value="reject">Reject</button>
+    </form>
+</div>
+{% empty %}
+<p>No pending listings.</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="my-4"style="background-color: #001f3f; color: #ffffff; padding: 10px; border-radius: 5px;">Manage Listing Status</h1>
+
+  <h2 class="mt-5">Pending Listings</h2>
+  <table class="table table-striped">
+    <thead style="background-color: #001f3f; color: #ffffff;">
+      <tr>
+        <th>Title</th>
+        <th>Realtor</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for listing in pending_listings %}
+        <tr>
+          <td>{{ listing.title }}</td>
+          <td>{{ listing.realtor }}</td>
+          <td>{{ listing.city }}</td>
+          <td>{{ listing.state }}</td>
+          <td>{{ listing.price }}</td>
+          <td>
+            <form method="post" class="d-inline">
+              {% csrf_token %}
+              <input type="hidden" name="listing_id" value="{{ listing.id }}">
+              <button type="submit" name="action" value="approve" class="btn btn-success btn-sm">Approve</button>
+              <button type="submit" name="action" value="reject" class="btn btn-danger btn-sm">Reject</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 class="mt-5">Approved Listings</h2>
+  <table class="table table-striped">
+    <thead style="background-color: #001f3f; color: #ffffff;">
+      <tr>
+        <th>Title</th>
+        <th>Realtor</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for listing in approved_listings %}
+        <tr>
+          <td>{{ listing.title }}</td>
+          <td>{{ listing.realtor }}</td>
+          <td>{{ listing.city }}</td>
+          <td>{{ listing.state }}</td>
+          <td>{{ listing.price }}</td>
+          <td>
+            <form method="post" class="d-inline">
+              {% csrf_token %}
+              <input type="hidden" name="listing_id" value="{{ listing.id }}">
+              <button type="submit" name="action" value="reject" class="btn btn-danger btn-sm">Reject</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 class="mt-5">Rejected Listings</h2>
+  <table class="table table-striped">
+    <thead style="background-color: #001f3f; color: #ffffff;">
+      <tr>
+        <th>Title</th>
+        <th>Realtor</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for listing in rejected_listings %}
+        <tr>
+          <td>{{ listing.title }}</td>
+          <td>{{ listing.realtor }}</td>
+          <td>{{ listing.city }}</td>
+          <td>{{ listing.state }}</td>
+          <td>{{ listing.price }}</td>
+          <td>
+            <form method="post" class="d-inline">
+              {% csrf_token %}
+              <input type="hidden" name="listing_id" value="{{ listing.id }}">
+              <button type="submit" name="action" value="approve" class="btn btn-success btn-sm">Approve</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+

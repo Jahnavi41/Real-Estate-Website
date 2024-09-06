@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% load custom_filters %}
+
+{% block content %}
+<h1 class="my-4 text-center">Add Realtor</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <form method="post" enctype="multipart/form-data" class="border p-4 rounded shadow-sm">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    {{ form.non_field_errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.name.label_tag }}
+                    {{ form.name|add_class:"form-control" }}
+                    {{ form.name.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.photo.label_tag }}
+                    {{ form.photo|add_class:"form-control-file" }}
+                    {{ form.photo.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.description.label_tag }}
+                    {{ form.description|add_class:"form-control" }}
+                    {{ form.description.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.phone.label_tag }}
+                    {{ form.phone|add_class:"form-control" }}
+                    {{ form.phone.errors }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email|add_class:"form-control" }}
+                    {{ form.email.errors }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+            <br><br>
+        </div>
+    </div>
+</div>
+{% endblock %}

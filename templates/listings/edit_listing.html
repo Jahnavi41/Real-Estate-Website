@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="mb-4 text-center">Edit Listing</h2>
+    <form method="post" enctype="multipart/form-data" class="border p-4 rounded shadow-lg mx-auto" style="max-width: 800px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-block mt-3">Save</button>
+    </form>
+    <div class="text-center mt-3">
+        <a href="{% url 'user_listings' %}" class="btn btn-secondary">Back to My Listings</a>
+    </div>
+</div>
+{% endblock %}
